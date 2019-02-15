@@ -376,13 +376,20 @@ However, if the lasso selects only a small variable proportion from $\mathcal{T}
 
 \section{Conclusion}
 
- 
 
+Under suitable conditions and assumptions, among which, weakly correlated variables and linear regime sparsity, the lasso did not always perform the task of selecting important vavriable with minimal error rate.
+\newline 
+
+We showed the relationship between the False Discovery Proportion (FDP) and the False Negative Rate (1 - TPP), we highlighted the trade-off which consists in the fact that we can't increase TPP without increasing FDP. The figure \ref{fig:tradeoffdiagram} points out the unreachable regions where one would ideally have a high TPP and a low false discoveries ie FDP.
+\newline 
+
+We focussed our analysis on lasso and talked about ridge regression and the subset selection estimator with the $\mathcal{L}_0$ regularization. 
+
+We Would like to mention that there are other variants of Lasso, including Elastic net which combines lasso and ridge regularization, fused lasso which penalizes differences instead of the individual coefficients, adaptive lasso which benefits from the variable selection of Lasso yet re-estimates parameters of selected variables by means of OLS, ... They all aim at overcoming the different limitations including shrinkage noise and correlation concerns.
+\newline
+
+Analysing this article was of a great award, it allowed us to better understand and cease the lasso in comparasion to the other optimization variants. 
 %-------------------------------------------------------------------------
 
-{\small
-\bibliographystyle{ieee}
-\bibliography{egbib}
-}
 
 \end{document}
