@@ -55,9 +55,9 @@ Soufiane MOUTEI\\
    This report is written in the context of the the course “Theoretical guidelines for high-dimensional data analysis”, under the supervision of Christophe Giraud.
 The goal of this report is to present a detailed analysis of the article  "False Discoveries occur Early on the Lasso Path” (https://arxiv.org/abs/1511.01957),  written by Weijie Su, Malgorzata Bogdan and Emmanuel Candes in November 2015, the most recent version being dated September 2016. We will try to grasp the key points, discuss the main results then talk about some limitations of the Lasso model. 
 
-We'll have a quick reminder about the regression problem and the Lasso Method. Then we will move on to talk about the Lasso path and variable selection and talk about the theorem and its hypotheses. After that, we’ll highlight the limitations of the lasso and the issues caused by this type of regulation.
+We'll have a quick reminder about the regression problem and the Lasso Method. After that, we will highlight the Lasso path and variable selection and talk about the theorem and its hypotheses. After that, we’ll highlight the limitations of the lasso and the issues caused by this type of regulation.
 
-We also provide an implementation and a numerical analysis in the attached notebook which can be found in the address \textbf{**(drive link)** }The aim was to reproduce some of the experiments of the paper to highlight and check the results of the authors.
+We also provide an implementation and a numerical analysis in the attached notebook which can be found in the github address provided below \footnote{https://github.com/rmissaoui/theoretical-guidelines-for-high-dimensional-data-analysis} The aim was to reproduce some of the paper's experiments to highlight and check the authors's results.
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
@@ -165,7 +165,7 @@ The intersection between the counter lines and the green area gives the solution
 
 \begin{figure}[!htbp]
    \begin{center}
-	\includegraphics[width=0.7\linewidth]{lasso2d}
+	\includegraphics[width=0.5\linewidth]{lasso2d}
    \caption{Lasso in 2D}
    \label{fig:lasso}
    \end{center}
@@ -185,27 +185,24 @@ In addition to that, the matrix \textbf{$\mathcal{X}$} has $i.i.d~\mathcal{N}(0,
 \subsubsection{Linear sparsity}
 The article makes the assumption that the coefficients $\beta_1 ... \beta_p $ are independent copies of a random variable $\pi$ such that: $\mathbb{E}\pi < \infty $ and $\forall \epsilon \in \left[0,1\right], \mathbb{P}(\pi \neq 0) = \epsilon$
 
-The article adds more limiting conditions when dealing with a high dimensional problem by setting:\\
+More limiting conditions were added when dealing with a high dimensional problem by setting:\\
  $\frac{p}{n} \to  \delta > 0; ~ p,n \to \infty$
 
 In addition to these assumptions, the authors add a condition on the degree of sparsity. In fact, as cited in the paper, the expected number of nonzero regression coefficients is linear in p and equal to $\epsilon.p$ for $\epsilon > 0$. Therefore, this model is opposed to asymptotic discussions. For instance, in large dimension problems the proportion of non-zero coefficients tends towards zero, which is not the case here.
 
 \subsubsection{Gaussian Designs}
 
-The authors claim that the gaussian designs of the matrix $\mathcal{X}$ with independent columns are assumed to work in favor for model selection thanks to the low correlations between the features which the lasso takes advantage of.
-
-
-Let us now turn to the main result of the article.
+The authors claim that the gaussian designs of the matrix $\mathcal{X}$ with independent columns are assumed to work in favor for model selection thanks to the low correlations between the features which the lasso takes advantage of. Let us now turn to the main result of the article.
 
 
 \subsection{Paper Stipulation }
 
 This paper shows that, in a regime of linear sparsity and under the regression framework, the lasso does not perform as expected, which consists in, to cite the paper, finding “the important variables with few errors”. The authors show that it’s impossible to increase the True Positive Proportion (TPP)  \footnote{\label{tpp}\textbf{TPP} is defined as the ratio between the number of true discoveries and that of potential true discoveries to be made.},  which reflects finding the significant variables, without increasing the False Discovery Proportion (FDP) \footnote{\label{fdp}
 \textbf{FDP} the ratio between the number of false discoveries and the total number of discoveries, along the Lasso path.} at the same time, which reflects the false discoveries . More formally, there is an asymptotic trade off between the False discovery Proportion and the True Positive Proportion.
-\newline 
+
 
 The authors claim that this result holds even in the case of the noiseless observation, $\sigma = 0$, which is a weak assumption.
-\newline 
+
 
 Let's recall the the lasso regression formulation:
 $$
@@ -247,16 +244,19 @@ q^*\left(u,\delta,\epsilon\right) = \frac{2(1-\epsilon)\Phi(-t^*(u))}{2(1-\epsil
  $$
 
 The fact that $q^*$ is strictly increasing illustrates the asymptotic trade-off between FDP and TPP. In fact, when TPP increases the lower bound of FDP gets higher, which leads to the increase of FDP with a probabilty tending to one. 
-\newline
+
 
 To better understand the behaviour of the function, you can find a display of some examples of it with different values of sparsity ($\epsilon$) and dimensionality ($\delta$) in figure ~\ref{fig:qfunction}.
-\newline
+
 
 An other interesting way to understand this trade-off, is by considering the FDP as a measure of the type I error, and 1 - TPP as a measure of type II error. Therefore, on the lasso path, both types of error rates cannot be simultaneously low. 
-\newline
+
 
 Figure \ref{fig:tradeoffdiagram} shows the Lasso trade-off diagram for two different cases. The boundary between the red and white area is assured by the function $q^*$. The red area is where both types of errors are small (ie high TPP and low FDP). This illustrates the paper's theorem as it says that the red region is not reachable on the Lasso path.
-\newline
+
+
+Please refer to the joint notebook for the detailed implementations, we tried to reproduce the results in the paper and we can say that, except figure \ref{fig:numillustration} which is quite a mess, the experiments that we put into place were satisfying.
+
 
 According to the last point of the theorem as cited in the paper, the boundary curve $q^*$ is tight, which means that if we take an other function $q$ such that there exists a point $u$ where $q(u) > q^*(u)$, q will will not satisfy the first two points of the theorem for some prior distribution $\Pi$ on the regressor coefficients.
 \newline
@@ -283,7 +283,7 @@ $\lim\limits_{M \rightarrow +\infty} \lim\limits_{n,p \rightarrow +\infty}  (TPP
 
 \begin{figure}[!htbp]
    \begin{center}
-	\includegraphics[width=0.9\linewidth]{qfunction}
+	\includegraphics[width=1.0\linewidth]{qfunction}
    \caption{Top-left: $\delta = 1$; top-right: $\epsilon = 0.2$; bottom-left: $\delta = 0.1$; bottom-right: $\epsilon = 0.05$}
    \label{fig:qfunction}
    \end{center}
@@ -291,13 +291,34 @@ $\lim\limits_{M \rightarrow +\infty} \lim\limits_{n,p \rightarrow +\infty}  (TPP
 %---
 \begin{figure}[!htbp]
    \begin{center}
-	\includegraphics[width=0.9\linewidth]{tradeoffdiagram}
+	\includegraphics[width=1.0\linewidth]{tradeoffdiagram}
    \caption{\parbox[t]{8.5cm}{The Lasso trade-off diagram: left: $\delta = 0.5$ and $\epsilon = 0.15$; right:$\delta = 0.3$ and $\epsilon = 0.15$. The vertical truncation occurs at 0.6791). }}
    \label{fig:tradeoffdiagram}
    \end{center}
 \end{figure}
-
+%---
 \clearpage
+
+Figure \ref{fig:numillustration} illustrates the results of the our simulation for finite values of n and p in the noiseless condition ie $\sigma = 0$. 
+
+We plot all pairs (TPP, FDP) of 10 Lasso paths for each of the cases n=p=1000 and n=p=5000. Despite the bad quality of the graph, we can confirm the fact that when TPP < 0.8, the large majority of pairs (TPP,FDP) along these 10 paths are above the boundary.
+
+
+Also, the average FDP gets closer to the boundary as TPP gets closer to one, a fraction of the paths fall below the line as well.
+\newline
+
+For the technical details, we adopted the same configuration as the paper in order to be able to compare both results. For both graphs $n/p = \delta = 1$, $\epsilon = 0.2$ and noise is zero ($\sigma = 0$);  \textbf{(a)} FDP vs. TPP along 10 independent Lasso paths with $P(\Pi = 50) = 1 - P(\Pi = 0) = \epsilon$;  \textbf{(b)} Mean FDP vs. mean TPP averaged at different values of $\lambda$ over 100 replicates for $n = p = 1000, P(\Pi = 0) = 1 - \epsilon$ as before, and $P(\Pi = 50| \Pi \neq 0) = 1 - P(\Pi = 0.1| \Pi \neq 0) = \epsilon \prime $
+
+
+\begin{figure}[!htbp]
+   \begin{center}
+	\includegraphics[width=1.0\linewidth]{num_illustration}
+   \caption{Numerical illustration}
+   \label{fig:numillustration}
+   \end{center}
+\end{figure}
+
+
 \subsubsection{Lasso Shrinkage Noise}
 
 We briefly mentioned earlier, when talking about the $\mathcal{L}_0$ regularization, that there are other methods to have a good model selection performance even under exponentional computations, thus sparing them from the difficulties in identifying variables in the model.
@@ -388,7 +409,7 @@ We focussed our analysis on lasso and talked about ridge regression and the subs
 We Would like to mention that there are other variants of Lasso, including Elastic net which combines lasso and ridge regularization, fused lasso which penalizes differences instead of the individual coefficients, adaptive lasso which benefits from the variable selection of Lasso yet re-estimates parameters of selected variables by means of OLS, ... They all aim at overcoming the different limitations including shrinkage noise and correlation concerns.
 \newline
 
-Analysing this article was of a great award, it allowed us to better understand and cease the lasso in comparasion to the other optimization variants. 
+Analysing this article was of a great award, it allowed us to better understand and cease the lasso in comparasion to the other optimization problems. 
 %-------------------------------------------------------------------------
 
 
