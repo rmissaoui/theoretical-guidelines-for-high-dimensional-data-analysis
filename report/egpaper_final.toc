@@ -10,4 +10,4 @@
 \contentsline {subsection}{\numberline {2.3}\hskip -1em.\nobreakspace {}Main Results}{5}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}The Lasso Trade-off Diagram}{5}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Lasso Shrinkage Noise}{7}{subsubsection.2.3.2}
-\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace {}Conclusion}{8}{section.3}
+\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace {}Conclusion}{9}{section.3}

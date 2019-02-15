@@ -212,6 +212,9 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tf
 INPUT /Users/ramzimissaoui/Documents/ComputerScienceUniverse/MasterX/courses/p1/th_guideline_for_data_analysis/report/lasso/report/./images/tradeoffdiagram.png
 INPUT ./images/tradeoffdiagram.png
 INPUT ./images/tradeoffdiagram.png
+INPUT /Users/ramzimissaoui/Documents/ComputerScienceUniverse/MasterX/courses/p1/th_guideline_for_data_analysis/report/lasso/report/./images/hist.png
+INPUT ./images/hist.png
+INPUT ./images/hist.png
 INPUT /Users/ramzimissaoui/Documents/ComputerScienceUniverse/MasterX/courses/p1/th_guideline_for_data_analysis/report/lasso/report/./images/num_illustration.png
 INPUT ./images/num_illustration.png
 INPUT ./images/num_illustration.png

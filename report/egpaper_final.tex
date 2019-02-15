@@ -299,6 +299,18 @@ $\lim\limits_{M \rightarrow +\infty} \lim\limits_{n,p \rightarrow +\infty}  (TPP
 %---
 \clearpage
 
+Figure \ref{fig:hist} summarizes the results of 100 experiments under the same Gaussian random framework as before. The histogram on the left gives us the proportion of true positives at the time the first false discovery enters the Lasso path. The one on the right shows the proportion of false discoveries at the moment when the last true positive enters the Lasso path.
+
+We can confirm that the first false discovery occurs relatively early, and that the proportion of false discoveries when the proportion of true positives reaches 1 for the first time is relatively high.
+
+\begin{figure}[!htbp]
+   \begin{center}
+	\includegraphics[width=0.8\linewidth]{hist}
+   \caption{Numerical illustration}
+   \label{fig:hist}
+   \end{center}
+\end{figure}
+
 Figure \ref{fig:numillustration} illustrates the results of the our simulation for finite values of n and p in the noiseless condition ie $\sigma = 0$. 
 
 We plot all pairs (TPP, FDP) of 10 Lasso paths for each of the cases n=p=1000 and n=p=5000. Despite the bad quality of the graph, we can confirm the fact that when TPP < 0.8, the large majority of pairs (TPP,FDP) along these 10 paths are above the boundary.
@@ -312,7 +324,7 @@ For the technical details, we adopted the same configuration as the paper in ord
 
 \begin{figure}[!htbp]
    \begin{center}
-	\includegraphics[width=1.0\linewidth]{num_illustration}
+	\includegraphics[width=0.8\linewidth]{num_illustration}
    \caption{Numerical illustration}
    \label{fig:numillustration}
    \end{center}
@@ -406,7 +418,7 @@ We showed the relationship between the False Discovery Proportion (FDP) and the 
 
 We focussed our analysis on lasso and talked about ridge regression and the subset selection estimator with the $\mathcal{L}_0$ regularization. 
 
-We Would like to mention that there are other variants of Lasso, including Elastic net which combines lasso and ridge regularization, fused lasso which penalizes differences instead of the individual coefficients, adaptive lasso which benefits from the variable selection of Lasso yet re-estimates parameters of selected variables by means of OLS, ... They all aim at overcoming the different limitations including shrinkage noise and correlation concerns.
+We would like to mention that there are other variants of Lasso, including Elastic net which combines lasso and ridge regularization, fused lasso which penalizes differences instead of the individual coefficients, adaptive lasso which benefits from the variable selection of Lasso yet re-estimates parameters of selected variables by means of OLS, ... They all aim at overcoming the different limitations including shrinkage noise and correlation concerns.
 \newline
 
 Analysing this article was of a great award, it allowed us to better understand and cease the lasso in comparasion to the other optimization problems. 
